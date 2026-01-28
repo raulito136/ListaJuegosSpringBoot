@@ -13,6 +13,7 @@
 </header>
 
 <nav class="menu">
+    <a th:href="@{/}" th:text="Todos"></a>
     <a th:each="p : ${platforms}" th:href="@{/(platform=${p})}" th:text="${p}"></a>
 </nav>
 
