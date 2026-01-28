@@ -26,7 +26,7 @@ main {
     width: 100%;
     height: 300px;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('https://picsum.photos/1200/400') no-repeat center center/cover;
+    url('https://img.freepik.com/vector-gratis/fondo-plano-formas-geometricas-verdes_23-2148379397.jpg?semt=ais_user_personalization&w=740&q=80') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,10 +112,29 @@ main {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 15px;
     transition: background 0.3s;
+    gap: 5px;
+}
+
+.plataforma-texto {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.titulo-plataforma {
+    font-size: 3rem;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 4px;
+    font-weight: 800;
 }
 
 /* --- PAGINA DETALLES (JUEGO) --- */
@@ -207,3 +226,4 @@ main {
     border-top: 1px solid #333;
     z-index: 1000;
 }
+

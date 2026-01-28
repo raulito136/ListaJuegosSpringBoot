@@ -40,6 +40,7 @@ class WebController {
 
         if (platform != null && !platform.isEmpty()) {
             filteredGames = gameRepository.findGamesByPlatform(platform, Sort.by("id"));
+            model.addAttribute("selectedPlatform", platform);
         } else {
             filteredGames = gameRepository.findAll();
         }

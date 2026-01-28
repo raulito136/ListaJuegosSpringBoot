@@ -17,13 +17,20 @@
 </nav>
 
 <main>
+    <h2 class="titulo-plataforma"
+        th:if="${selectedPlatform != null}"
+        th:text="${selectedPlatform}">
+    </h2>
     <div class="juegos-contenedor">
 
         <div class="juegos"
              th:each="g : ${games}"
-             th:style="'background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url(https://picsum.photos/seed/' + ${g.id} + '/400/400) no-repeat center center/cover;'">
+             th:style="'background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url(https://picsum.photos/seed/' + ${g.id} + '/400/400) no-repeat center center/cover;'">
 
-            <a th:href="@{/juego/{id}(id=${g.id})}" th:text="${g.title}">Título del Juego</a>
+            <a th:href="@{/juego/{id}(id=${g.id})}">
+                <span th:text="${g.title}">Título del Juego</span>
+                <span class="plataforma-texto" th:text="${g.platform}">Plataforma</span>
+            </a>
 
         </div>
 
