@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primera web con SpringBoot</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="cabecera">
+    <h1>Biblioteca de Juegos</h1>
+</header>
+
+<nav class="menu">
+    <a th:each="p : ${platforms}" th:href="@{/(platform=${p})}" th:text="${p}"></a>
+</nav>
+
+<main class="detalles">
+    <section class="juego-seccion-arriba">
+        <div class="div-imagen">
+            <img th:src="@{'https://picsum.photos/seed/' + ${juego.id} + '/400/400'}" alt="Imagen">
+        </div>
+
+        <div class="datos-basicos">
+            <h2 th:text="${juego.title}">Nombre del juego</h2>
+            <p th:text="${juego.platform}">Plataforma</p>
+            <p th:text="${juego.year}">Año</p>
+        </div>
+    </section>
+
+    <section class="descripcion-contenedor">
+        <p th:text="${juego.description}">Descripción larga del videojuego</p>
+    </section>
+
+    <div class="boton-volver">
+        <a th:href="@{/}" class="back-btn-wire">Volver</a>
+    </div>
+
+    <footer class="firma">
+        Realizado por Raul
+    </footer>
+</main>
+
+</body>
+</html>

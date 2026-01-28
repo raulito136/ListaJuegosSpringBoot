@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primera web con SpringBoot</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="cabecera">
+    <h1>Biblioteca de Juegos</h1>
+</header>
+
+<nav class="menu">
+    <a th:each="p : ${platforms}" th:href="@{/(platform=${p})}" th:text="${p}"></a>
+</nav>
+
+<main>
+    <div class="juegos-contenedor">
+
+        <div class="juegos"
+             th:each="g : ${games}"
+             th:style="'background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url(https://picsum.photos/seed/' + ${g.id} + '/400/400) no-repeat center center/cover;'">
+
+            <a th:href="@{/juego/{id}(id=${g.id})}" th:text="${g.title}">Título del Juego</a>
+
+        </div>
+
+        <div th:if="${#lists.isEmpty(games)}" style="grid-column: 1/-1; padding: 50px;">
+            <h2>No se han encontrado juegos para esta plataforma.</h2>
+            <br>
+            <a th:href="@{/}" class="back-btn">Ver todos los juegos</a>
+        </div>
+
+    </div>
+    <footer class="firma">
+        Realizado por Raul
+    </footer>
+</main>
+
+</body>
+</html>
