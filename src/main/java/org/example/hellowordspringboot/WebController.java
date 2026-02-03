@@ -3,10 +3,7 @@ package org.example.hellowordspringboot;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,5 +45,31 @@ class WebController {
         model.addAttribute("games", filteredGames);
         model.addAttribute("platforms", platforms);
         return "index";
+    }
+
+    @GetMapping("/formulario")
+    public String formulario(Model model,@ModelAttribute Game game){
+        model.addAttribute("platforms", gameRepository.findPlatformGames());
+        return "formulario";
+    }
+
+    @PostMapping("/juego/nuevo")
+    public String guardarJuego(@ModelAttribute Game game) {
+        gameRepository.save(game);
+        return "redirect:/";
+    }
+
+    @GetMapping("/juego/editar/{id}")
+    public String editarJuego(@PathVariable Integer id, Model model) {
+        // Buscamos el juego. Si no existe, redirigimos al índice.
+        Game game = gameRepository.findById(id).orElse(null);
+
+        if (game == null) {
+            return "redirect:/";
+        }
+        model.addAttribute("game", game);
+        model.addAttribute("platforms", gameRepository.findPlatformGames());
+
+        return "formulario";
     }
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Juego - Biblioteca</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="cabecera">
+    <h1>Biblioteca de Juegos</h1>
+</header>
+
+<nav class="menu">
+    <a th:href="@{/}">Volver al Inicio</a>
+</nav>
+
+<main>
+    <h2 class="titulo-plataforma">Guardar Juego</h2>
+
+    <section class="formulario-contenedor">
+        <form th:action="@{/juego/nuevo}" th:object="${game}" method="post" class="form-grid">
+            <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <label>Título del Videojuego</label>
+                <input type="text" th:field="*{title}" placeholder="Ej: The Legend of Zelda" required>
+            </div>
+
+            <div class="form-group">
+                <label>Plataforma</label>
+                <select th:field="*{platform}">
+                    <option th:each="p : ${platforms}" th:value="${p}" th:text="${p}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Año de Lanzamiento</label>
+                <input type="number" th:field="*{year}" placeholder="2024" required>
+            </div>
+
+            <div class="form-group">
+                <label>Descripción</label>
+                <textarea th:field="*{description}" rows="4" placeholder="Escribe una breve descripción..."></textarea>
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="back-btn-wire btn-submit">
+                    Guardar Videojuego
+                </button>
+            </div>
+
+        </form>
+    </section>
+
+    <footer class="firma">
+        Realizado por Raul
+    </footer>
+</main>
+
+</body>
+</html>
