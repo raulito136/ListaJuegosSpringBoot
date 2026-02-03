@@ -20,7 +20,7 @@
 <main class="detalles">
     <section class="juego-seccion-arriba">
         <div class="div-imagen">
-            <img th:src="@{'https://picsum.photos/seed/' + ${juego.id} + '/400/400'}" alt="Imagen">
+            <img th:src="${juego.imageUrl}" alt="Imagen">
         </div>
 
         <div class="datos-basicos">

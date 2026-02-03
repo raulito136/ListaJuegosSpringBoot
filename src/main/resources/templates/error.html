@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Mi primera web con SpringBoot</title>
+    <title>Error - Biblioteca de Juegos</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
-
 </head>
 <body>
-<main>
-    <h1>ERROR</h1>
-    <h2><span th:text="${descripcion}"></span></h2>
+<main class="error-contenedor">
+    <h1>ERROR <span th:text="${errorData.errorCode}">000</span></h1>
+
+    <h2 th:text="${errorData.error}">Tipo de Error</h2>
+
+    <p class="error-mensaje">
+        <strong>Detalle:</strong> <span th:text="${errorData.message}">Mensaje de error</span>
+    </p>
+
+    <br>
+    <a th:href="@{/}" class="back-btn">Volver al Inicio</a>
 </main>
+
+<footer class="firma">
+    Realizado por Raul
+</footer>
 </body>
 </html>
