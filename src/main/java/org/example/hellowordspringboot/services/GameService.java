@@ -10,9 +10,8 @@ import java.util.Optional;
 
 /**
  * Servicio encargado de gestionar la lógica de negocio para los videojuegos.
- * <p>
- * Esta clase sirve como capa intermedia entre el {@link org.example.hellowordspringboot.controllers.WebController}
- * y el {@link org.example.hellowordspringboot.repositories.GameRepository}, asegurando que el acceso
+ * Esta clase sirve como capa intermedia entre el {@link WebController}
+ * y el {@link GameRepository}, asegurando que el acceso
  * a los datos de la tabla "games" sea coherente.
  */
 @Service
@@ -39,7 +38,6 @@ public class GameService {
 
     /**
      * Obtiene los nombres únicos de todas las plataformas presentes en la biblioteca.
-     * <p>
      * Este método es utilizado frecuentemente para generar dinámicamente el menú de navegación.
      * * @return Una lista de cadenas de texto con las plataformas únicas.
      */
